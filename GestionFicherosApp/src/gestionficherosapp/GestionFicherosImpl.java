@@ -10,6 +10,8 @@ import gestionficheros.GestionFicherosException;
 import gestionficheros.TipoOrden;
 
 public class GestionFicherosImpl implements GestionFicheros{
+	
+	//Declaracion de variables
 	private File carpetaWork = null;
 	private Object[][] contenido;
 	private int filas=0;
@@ -24,7 +26,7 @@ public class GestionFicherosImpl implements GestionFicheros{
 		
 	}
 
-
+	//Funcion para actualizar el contenido de la variable File
 	private void actualiza() {
 		// TODO Auto-generated method stub
 		String[] ficheros= carpetaWork.list();
@@ -52,6 +54,8 @@ public class GestionFicherosImpl implements GestionFicheros{
 	@Override
 	public void arriba() {
 		// TODO Auto-generated method stub
+		
+		//Compruebo que la carpeta seleccionada tenga padre
 		if(carpetaWork.getParentFile()!=null){
 			carpetaWork = carpetaWork.getParentFile();
 			actualiza();
@@ -81,14 +85,18 @@ public class GestionFicherosImpl implements GestionFicheros{
 	}
 
 
+	//Funcion que entra en la carpeta clickada
 	@Override
 	public void entraA(String arg0) throws GestionFicherosException {
 		// TODO Auto-generated method stub
 		File file = new File(carpetaWork,arg0);
+		
+		//Compruebo si es un directorio
 		if(!file.isDirectory()){
 			throw new GestionFicherosException("Error"+file.getAbsolutePath()+", no es un directorio");
 		}
 		
+		//Comprubeo si se puede leer
 		if(!file.canRead()){
 			throw new GestionFicherosException("Error"+file.getAbsolutePath()+", no tiene permisos de lectura");
 		}
@@ -153,12 +161,14 @@ public class GestionFicherosImpl implements GestionFicheros{
 	}
 
 
+	//Recojo la información de la carpeta activa
 	@Override
 	public String getInformacion(String arg0) throws GestionFicherosException {
 		// TODO Auto-generated method stub
 		StringBuilder str = new StringBuilder();
 		File file = new File(carpetaWork,arg0);
 		
+		//Compruebo que el archivo exista
 		if(file==null){
 			throw new GestionFicherosException("Error"+file.getAbsolutePath()+", no existe");
 		}
@@ -168,7 +178,7 @@ public class GestionFicherosImpl implements GestionFicheros{
 		
 		//Tipo fichero o carpeta
 		
-		if(!file.isDirectory()){
+		if(!file.isDirectory()){//Compruebo si es directorio
 			str.append("Tipo de fichero: archivo\n");
 		}else{
 			str.append("Tipo de fichero: directorio\n");
@@ -183,7 +193,7 @@ public class GestionFicherosImpl implements GestionFicheros{
 		str.append("Ultima modificación: "+df.format(file.lastModified())+"\n");
 		
 		//Fichero oculto
-		if(!file.isHidden()){
+		if(!file.isHidden()){//Comoruebo si es visible
 			str.append("No es oculto\n");
 		}else{
 			str.append("Es oculto\n");			
@@ -191,7 +201,7 @@ public class GestionFicherosImpl implements GestionFicheros{
 		
 		
 		//Si es un directorio: espacio libre, disponible o total
-		if(file.isDirectory()){
+		if(file.isDirectory()){//Pregunto la informacion del fihero o directorio
 			str.append("Espacio libre: "+file.getFreeSpace()+"\n");
 			str.append("Espacio disponible: "+file.getUsableSpace()+"\n");
 			str.append("Espacio total: "+file.getTotalSpace()+"\n");
@@ -286,6 +296,7 @@ public class GestionFicherosImpl implements GestionFicheros{
 	}
 
 
+	//Funcion que muestra la ruta completa
 	@Override
 	public void setDirCarpeta(String arg0) throws GestionFicherosException {
 		// TODO Auto-generated method stub

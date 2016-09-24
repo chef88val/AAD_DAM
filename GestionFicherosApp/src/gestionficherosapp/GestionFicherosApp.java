@@ -5,8 +5,9 @@ import gestionficheros.MainGUI;
 public class GestionFicherosApp {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// Creo un objeto de la clase que gestionará la información
 		GestionFicherosImpl getFicherosImpl = new GestionFicherosImpl();
+		//Establezco la propiedad de ser visible a la aplicación
 		new MainGUI(getFicherosImpl).setVisible(true);
 	}
 
