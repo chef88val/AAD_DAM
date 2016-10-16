@@ -9,6 +9,7 @@ public class GestionFicherosApp {
 		GestionFicherosImpl getFicherosImpl = new GestionFicherosImpl();
 		//Establezco la propiedad de ser visible a la aplicación
 		new MainGUI(getFicherosImpl).setVisible(true);
+		//new GestionFicherosP
 	}
 
 }

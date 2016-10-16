@@ -1,13 +1,16 @@
 package gestionficherosapp;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.Format;
 
 import gestionficheros.FormatoVistas;
 import gestionficheros.GestionFicheros;
 import gestionficheros.GestionFicherosException;
+import gestionficheros.GestionFicherosPlus;
 import gestionficheros.TipoOrden;
+import gestionficheros.contenido.ContenidoFicheroExcepcion;
 
 public class GestionFicherosImpl implements GestionFicheros{
 	
@@ -18,6 +21,7 @@ public class GestionFicherosImpl implements GestionFicheros{
 	private int columnas =3;
 	private TipoOrden ordenado = TipoOrden.DESORDENADO;
 	private FormatoVistas formatoVistas = FormatoVistas.NOMBRES;
+	
 	
 	
 	public GestionFicherosImpl(){
@@ -62,26 +66,95 @@ public class GestionFicherosImpl implements GestionFicheros{
 		}
 		
 	}
-
+//&& file.canExecute() && file.canWrite()
 
 	@Override
 	public void creaCarpeta(String arg0) throws GestionFicherosException {
-		// TODO Auto-generated method stub
+		//Creo un objeto file
+		File file = new File(carpetaWork,arg0);
+		
+		//Compruebo los permisos del archivo o si no existe
+		if(!file.canRead() || !file.exists()){//si el archivo no es de lectura
+			if(!file.canWrite()){//si el archivo no es de escritura
+				if(!file.canExecute()){//si el archivo no es de lectura
+					
+						//File newfile = new File(carpetaWork.getAbsolutePath()+"/"+arg0);
+						System.out.println(file);
+						
+						//Compruebo si es posible crear el archivo
+						if(!file.mkdir()){
+							throw new GestionFicherosException("Error3, "+arg0+", no se puede escribir");
+						}else{
+							file.mkdir();//Lo creo
+						}
+					
+						
+					
+				}else{
+					throw new GestionFicherosException("Error2, "+arg0+", no se puede ejecutar");
+				}
+			}else{
+				throw new GestionFicherosException("Error1, "+arg0+", no se puede escribir");
+			}
+		}else{
+			throw new GestionFicherosException("Error0, "+arg0+", existe");
+		}
+	
+		actualiza();
 		
 	}
 
 
 	@Override
 	public void creaFichero(String arg0) throws GestionFicherosException {
-		// TODO Auto-generated method stub
-		
+		//Creo un objeto file
+				File file = new File(carpetaWork,arg0);
+				
+				//Compruebo los permisos del archivo o si no existe
+				if(!file.canRead() || !file.exists()){//si el archivo no es de lectura
+					if(!file.canWrite()){//si el archivo no es de escritura
+						if(!file.canExecute()){//si el archivo no es de lectura
+					
+						//File newfile = new File(carpetaWork.getAbsolutePath()+"/"+arg0);
+						System.out.println(file);
+						
+						try {//Creo un try  catch para que si hay un error me lo myestre y me salte la ejecucion
+							file.createNewFile();//Creo el archivo
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							throw new GestionFicherosException("Error3, "+arg0+" creando el archivo");
+						}
+						
+					
+				}else{
+					throw new GestionFicherosException("Error2, "+arg0+", no se puede ejecutar");
+				}
+			}else{
+				throw new GestionFicherosException("Error1, "+arg0+", no se puede escribir");
+			}
+		}else{
+			throw new GestionFicherosException("Error0, "+arg0+", existe");
+		}
+		actualiza();
 	}
 
 
 	@Override
 	public void elimina(String arg0) throws GestionFicherosException {
-		// TODO Auto-generated method stub
+		//Creo un objeto de tipo file		
+		File file = new File(carpetaWork,arg0);
 		
+		//Compruebo si existe el archivo
+		if(file.exists()){
+			if(file.delete()){//Compruebo si se ejecuta la accion de eliminar
+				file.delete();
+			}else{
+				throw new GestionFicherosException("Error"+file.getAbsolutePath()+", no se ha eliminado");
+			}
+		}else{
+			throw new GestionFicherosException("Error"+file.getAbsolutePath()+", no existe");
+		}
+		actualiza();
 	}
 
 
@@ -263,29 +336,49 @@ public class GestionFicherosImpl implements GestionFicheros{
 
 	@Override
 	public void renombra(String arg0, String arg1) throws GestionFicherosException {
-		// TODO Auto-generated method stub
+		//Creo el primer file
+		File file = new File(carpetaWork, arg0);
+		//creo el egundo file para intercambiar los nombre
+		File newfile = new File(carpetaWork, arg1);
 		
+		if(file.exists()){//Compruebo si existe el primer archivo
+			if(newfile.exists()){//Compruebo si existe el segundo archivo
+				throw new GestionFicherosException("Error"+newfile.getAbsolutePath()+", ya existe");
+			}else{
+				file.renameTo(newfile);//Renombro
+			}
+		}else{
+			throw new GestionFicherosException("Error"+file.getAbsolutePath()+", no existe, y no hace falta renombrar");
+		}
+		
+		
+		actualiza();
 	}
 
 
 	@Override
 	public boolean sePuedeEjecutar(String arg0) throws GestionFicherosException {
 		// TODO Auto-generated method stub
-		return false;
+		File file = new File(carpetaWork,arg0);
+		boolean w=file.setExecutable(true);
+		return w;
 	}
 
 
 	@Override
 	public boolean sePuedeEscribir(String arg0) throws GestionFicherosException {
 		// TODO Auto-generated method stub
-		return false;
+		File file = new File(carpetaWork,arg0);
+		boolean w=file.setWritable(true);
+		return w;
 	}
 
 
 	@Override
 	public boolean sePuedeLeer(String arg0) throws GestionFicherosException {
-		// TODO Auto-generated method stub
-		return false;
+		File file = new File(carpetaWork,arg0);
+		boolean w=file.setReadable(true);
+		return w;
 	}
 
 
@@ -367,4 +460,5 @@ public class GestionFicherosImpl implements GestionFicheros{
 		// TODO Auto-generated method stub
 		
 	}
+	
 }
