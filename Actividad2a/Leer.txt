@@ -1,0 +1,4 @@
+El archivo biblioteca.xml es el de JuanMi
+El archivo bibliotecaJavier.xml es el archivo generado por el alumno Javier Segarra con otro formato
+
+La diferencia entre ambos es la lectura de la etiqueta autor.

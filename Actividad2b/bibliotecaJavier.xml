@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<biblioteca>
+  <libro>
+    <titulo anyo="31/12/2000">a</titulo>
+    <autor>a</autor>
+    <editor>a</editor>
+    <paginas>1</paginas>
+  </libro>
+  <libro>
+    <titulo anyo="31/12/2000">a</titulo>
+    <autor>a</autor>
+    <editor>a</editor>
+    <paginas>1</paginas>
+  </libro>
+  <libro>
+    <titulo anyo="31/12/2000">a</titulo>
+    <autor>a</autor>
+    <editor>a</editor>
+    <paginas>1</paginas>
+  </libro>
+</biblioteca>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Libros>
+<Libro>
+<titulo fecha="31/12/2000">a</titulo>
+<autor>a</autor>
+<editor>a</editor>
+<edad>1</edad>
+</Libro>
+<Libro>
+<titulo fecha="31/12/2000">b</titulo>
+<autor>b</autor>
+<editor>b</editor>
+<edad>2</edad>
+</Libro>
+</Libros>

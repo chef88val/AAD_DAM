@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<biblioteca>
+  <libro>
+    <titulo anyo="31/12/2000">a<nombre>a</nombre>
+      <nombre>b</nombre>
+      <nombre>c</nombre>
+    </titulo>
+    <autor>a b c</autor>
+    <editor>a</editor>
+    <paginas>1</paginas>
+  </libro>
+</biblioteca>
