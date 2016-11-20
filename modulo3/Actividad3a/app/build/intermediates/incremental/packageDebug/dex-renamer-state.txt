@@ -1,0 +1,7 @@
+#Sun Nov 20 18:36:34 CET 2016
+base.0=/Users/js_cmd/DAM/datos/modulo3/Actividad3a/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_bf746f144fa3d9c64043f4016875b99432122e61
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/Users/js_cmd/DAM/datos/modulo3/Actividad3a/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_32c1b8ca2dd37c1da020c3da397eb97a3eb76a8e/classes.dex
+base.1=/Users/js_cmd/DAM/datos/modulo3/Actividad3a/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_32c1b8ca2dd37c1da020c3da397eb97a3eb76a8e
+file.0=/Users/js_cmd/DAM/datos/modulo3/Actividad3a/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_bf746f144fa3d9c64043f4016875b99432122e61/classes.dex
