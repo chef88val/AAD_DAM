@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discografia>
+  <disco>
+    <titulo>Balls to the Walxxx</titulo>
+    <grupo>Accept</grupo>
+    <nacionalidad>Alemania</nacionalidad>
+    <lider>Udo Dirkschneider</lider>
+    <anyo>1983</anyo>
+  </disco>
+  <disco>
+    <titulo>Keeper Of The Seven Keys</titulo>
+    <grupo>Helloween</grupo>
+    <nacionalidad>Alemania</nacionalidad>
+    <lider>Michael Kiske</lider>
+    <anyo>1987</anyo>
+  </disco>
+  <disco>
+    <titulo>Carolus Rex</titulo>
+    <grupo>Sabaton</grupo>
+    <nacionalidad>Suecia</nacionalidad>
+    <lider>Joakim Broden</lider>
+    <anyo>2012</anyo>
+  </disco>
+</discografia>
